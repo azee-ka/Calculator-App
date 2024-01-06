@@ -21,10 +21,10 @@ const tabButtons = {
     name: "Trig",
     buttons: trig,
   },
-  tab5: {
-    name: "Linear Algebra",
-    buttons: linearAlgebra,
-  },
+  // tab5: {
+  //   name: "Linear Algebra",
+  //   buttons: linearAlgebra,
+  // },
 };
 
 const KaTeXButton = ({ label, value, writeToMathField }) => (

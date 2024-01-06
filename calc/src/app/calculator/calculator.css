@@ -13,6 +13,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 10px;
+    text-align: left;
   }
   
   .calculator-title {

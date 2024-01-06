@@ -5,7 +5,7 @@ const symbols = {
     '\\frac{\\partial}{\\partial x}': ['\\frac{\\partial}{\\partial x}\\left({ }\\right)', 1],
     '\\int{}': ['\\int', 0],
     '\\int_{a}^{b}': ['\\int_{ }^{ }\\left({ }\\right)', 4],
-    '\\oint': ['\\oint\\left({ }\\right)', 1],
+    // '\\oint': ['\\oint\\left({ }\\right)', 1],
     '\\sum': ['\\sum_{i={ }}^{ }\\left({ }\\right)', 4],
     '\\prod{}' : ['\\prod_{i={}}^{ }\\left({ }\\right)', 4],
     '\\lim_{}{}': [' \\lim_{x \\to } \\left( { } \\right)', 3],
@@ -27,8 +27,8 @@ const symbols = {
     '\\ln{}': ['\\ln{\\left(\\right) }', 1],
     '\\log_{a}{b}': [' \\log_{ } \\left( { } \\right)', 3],
 
-    '\\prime': ['\\prime'],
-    '\\Gamma': ['\\Gamma\\left({}\\right)', 1],
+    // '\\prime': ['\\prime'],
+    // '\\Gamma': ['\\Gamma\\left({}\\right)', 1],
     '\\sin' : ['\\sin{\\left(\\right)}', 1],
     '\\cos' : ['\\cos{\\left(\\right) }', 1],
     '\\tan' : ['\\tan{\\left(\\right) }', 1],
@@ -39,6 +39,7 @@ const symbols = {
   
   
   const greekLetters = {
+  // lower greek letters
   'α': ['\\alpha', 0],
   'β': ['\\beta', 0],
   'γ': ['\\gamma', 0],
@@ -63,10 +64,7 @@ const symbols = {
   'χ': ['\\chi', 0],
   'ψ': ['\\psi', 0],
   'ω': ['\\omega', 0],
-  };
-  
-  
-  const upperGreekLetters = {
+  // upper greek letters
   'Α': ['A', 0],
   'Β': ['B', 0],
   'Γ': ['\\Gamma', 0],
@@ -92,6 +90,16 @@ const symbols = {
   'Ψ': ['\\Psi', 0],
   'Ω': ['\\Omega', 0],
   };
+  
+  
+  const calculusSymbols = {
+    '\\frac{d}{dx}': ['\\frac{d}{dx}\\left({ }\\right)', 1],
+    '\\frac{\\partial}{\\partial x}': ['\\frac{\\partial}{\\partial x}\\left({ }\\right)', 1],
+    '\\int{}': ['\\int', 0],
+    '\\int_{a}^{b}': ['\\int_{ }^{ }\\left({ }\\right)', 4],
+    '\\int_{a}^{b}\\int_{a}^{b}': ['\\int_{ }^{ }\\left({ }\\right)\\int_{ }^{ }\\left({ }\\right)', 4],
+    '\\int_{a}^{b} \\int_{a}^{b} \\int_{a}^{b}': ['\\int_{ }^{ }\\left({ }\\right) \\int_{ }^{ }\\left({ }\\right) \\int_{ }^{ }\\left({ }\\right)', 4],
+  };
 
   const trig = {
     'sin' : ['\\sin{\\left(\\right) }', 1],
@@ -111,18 +119,18 @@ const symbols = {
   };
 
 
-  const linearAlgebra = {
-    // existing entries...
-    '\\vec{v}': ['\\vec{ }', 1], // vector
-    '\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}': ['\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}', 1], // matrix
-    '\\det': ['\\det\\left({}\\right)', 1], // determinant
-    '\\mathrm{Trace}': ['\\mathrm{Tr}\\left({}\\right)', 1], // trace
-    '\\mathrm{rank}': ['\\mathrm{rank}\\left({}\\right)', 1], // rank
-    '\\mathrm{null}': ['\\mathrm{null}\\left({}\\right)', 1], // null space
-    '\\mathrm{Span}': ['\\mathrm{Span}\\left({}\\right)', 1], // span
-    '\\dim': ['\\mathrm{dim}\\left({}\\right)', 1], // dimension
-    '\\ker': ['\\mathrm{ker}\\left({}\\right)', 1], // kernel
-  };
+  // const linearAlgebra = {
+  //   // existing entries...
+  //   '\\vec{v}': ['\\vec{ }', 1], // vector
+  //   '\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}': ['\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}', 1], // matrix
+  //   '\\det': ['\\det\\left({}\\right)', 1], // determinant
+  //   '\\mathrm{Trace}': ['\\mathrm{Tr}\\left({}\\right)', 1], // trace
+  //   '\\mathrm{rank}': ['\\mathrm{rank}\\left({}\\right)', 1], // rank
+  //   '\\mathrm{null}': ['\\mathrm{null}\\left({}\\right)', 1], // null space
+  //   '\\mathrm{Span}': ['\\mathrm{Span}\\left({}\\right)', 1], // span
+  //   '\\dim': ['\\mathrm{dim}\\left({}\\right)', 1], // dimension
+  //   '\\ker': ['\\mathrm{ker}\\left({}\\right)', 1], // kernel
+  // };
 
   
-  export {symbols, greekLetters, upperGreekLetters, trig, linearAlgebra  }
+  export {symbols, greekLetters, calculusSymbols as upperGreekLetters, trig  }
