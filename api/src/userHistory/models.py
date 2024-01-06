@@ -1,9 +1,9 @@
 # models.py
 from django.db import models
-from django.contrib.auth.models import User
+from src.baseUser.models import BaseUser
 
 class UserHistory(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(BaseUser, on_delete=models.CASCADE)
     expression = models.CharField(max_length=255)
     result = models.CharField(max_length=255)
     timestamp = models.DateTimeField(auto_now_add=True)
