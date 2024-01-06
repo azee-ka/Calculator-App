@@ -36,6 +36,19 @@ api/runserver.sh
 calc/node_modules/
 # Ignore all __pycache__ folders
 **/__pycache__/
+*.pyc
 
 # Ignore all migrations folders
 **/migrations/
+
+
+
+# Ignore logs
+*.log
+
+# Ignore production-related files
+reportWebVitals.js
+setupTests.js
+
+# Ignore IDE-specific files
+.vscode/
