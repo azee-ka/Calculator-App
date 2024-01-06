@@ -1,34 +1,31 @@
 # views.py
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from .models import BaseUser
+from .serializers import BaseUserSerializer
 from django.contrib.auth import authenticate, login
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
 
-@csrf_exempt
-@require_POST
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def register_view(request):
+    serializer = BaseUserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
 def login_view(request):
-    username = request.POST.get('username')
-    password = request.POST.get('password')
+    username = request.data.get('username')
+    password = request.data.get('password')
+
     user = authenticate(request, username=username, password=password)
 
     if user is not None:
         login(request, user)
-        return JsonResponse({'success': True, 'user': {'username': user.username, 'user_type': 'your_user_type'}})
+        return Response({"message": "Login successful"}, status=200)
     else:
-        return JsonResponse({'success': False, 'error': 'Invalid credentials'})
-
-@csrf_exempt
-@require_POST
-def register_view(request):
-    form = UserCreationForm(request.POST)
-
-    if form.is_valid():
-        user = form.save()
-        login(request, user)
-        return JsonResponse({'success': True, 'user': {'username': user.username, 'user_type': 'your_user_type'}})
-    else:
-        return JsonResponse({'success': False, 'error': 'Invalid registration data'})
+        return Response({"message": "Invalid credentials"}, status=401)

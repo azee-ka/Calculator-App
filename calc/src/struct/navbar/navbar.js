@@ -13,6 +13,7 @@ const Navbar = ({ privatePagesForNavbar }) => {
 
     const publicPagesNavbar = [
         { path: '/', label: 'Home', id: 'navbar-phrase' },
+        { path: '/calculator', label: 'Calculator', id: 'navbar-phrase' },
         { path: '/access', label: 'Access', id: 'navbar-access' },
     ];
 

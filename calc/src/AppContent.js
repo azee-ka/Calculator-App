@@ -9,6 +9,8 @@ import Access from './access/access';
 import RegisterForm from './access/register/register';
 import LoginForm from './access/login/login';
 
+import Calculator from './app/calculator/calculator';
+
 function AppContent() {
     const { authState } = useAuthContext();
 
@@ -23,24 +25,31 @@ function AppContent() {
             name: 'Access',
             path: '/access',
             element: (<Access />),
-            key: 'Access',
+            key: 'Access-1',
         },
         {
             name: 'Login',
             path: '/access/login',
             element: (<LoginForm />),
             key: 'Login',
-            hasSmallSidebar: false,
-            hasLargeSidebar: false,
         },
         {
             name: 'Register',
             path: '/access/register',
             element: (<RegisterForm />),
             key: 'Register',
-            hasSmallSidebar: false,
-            hasLargeSidebar: false,
         },
+        {
+            name: 'Calculator',
+            path: '/calculator',
+            element: (<Calculator />),
+            key: 'Calculator',
+        },
+        {   name: 'Calculator',
+            path: '/calculator/:expression', 
+            element: <Calculator />, 
+            key: 'Calculator-expression',
+        }
     ]
 
     const privateRoutes = [

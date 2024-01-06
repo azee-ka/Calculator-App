@@ -1,0 +1,17 @@
+<div className='field'>
+    <div className='placeholder-field'>
+     {isPlaceholderVisible && (
+       <div className='placeholder' id={`placeholder-${id}`} >{placeholder}</div>
+     )}
+   </div>
+  <div className='edit-field'>
+     <EditableMathField
+       onChange={handleChange}
+       mathquillDidMount={(mathField) => (mathFieldRef.current = mathField)}
+       onKeyDown={handleKeyDown}
+       id={id}
+       className={`math-field`}
+   />
+     <p>Hello</p>
+   </div>
+ </div>
