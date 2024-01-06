@@ -1,12 +1,17 @@
-.calculator-content-holder-inside{
+.calculator-content-holder-inside {
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
 .calculator-tabs {
-  padding-bottom: 15px;
+  padding: 5px;
+  background-color: rgba(0, 128, 0, 0);
+  height: 170px;
+  /* height: fit-content; */
+  /* overflow-y: auto !important; */
 }
+
 
 .calculator-field-and-button {
   /* margin-left: 1%;
@@ -61,16 +66,18 @@
   border: none;
   border-radius: 5px;
   font-size: 18px;
-  background-color:rgba(0, 95, 106, 0.682);
+  background-color: rgba(0, 95, 106, 0.682);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  }
-  
+}
 
-  .calculator-evaluate-button button:hover {
-    background-color:  rgba(0, 124, 126, 0.323);
-  }
+
+.calculator-evaluate-button button:hover {
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: 0px 0px 2px 2px rgb(0, 125, 134);
+
+}
 
 
 
@@ -96,16 +103,17 @@
   background-color: rgba(255, 255, 255, 0);
 }
 
-.mode-btns button:first-child{
+.mode-btns button:first-child {
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
 }
-.mode-btns button:last-child{
+
+.mode-btns button:last-child {
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
 }
 
-.mode-btns button{
+.mode-btns button {
   font-size: 15px !important;
   background-color: #00596f9c;
   border: none;

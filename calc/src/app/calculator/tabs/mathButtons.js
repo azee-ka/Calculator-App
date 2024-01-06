@@ -116,6 +116,10 @@ const symbols = {
     'sech' : ['\\sech{\\left(\\right) }', 1],
     'coth' : ['\\coth{\\left(\\right) }', 1],
 
+    '\\sin^{-1}' : ['\\sin^{-1}\\left(\\right)', 1],
+    '\\cos^{-1}' : ['\\cos^{-1}\\left(\\right)', 1],
+    '\\tan^{-1}' : ['\\tan^{-1}\\left(\\right)', 1],
+
   };
 
 
