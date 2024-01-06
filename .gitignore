@@ -24,9 +24,22 @@ yarn-error.log*
 
 
 # .gitignore
-api/__pycache__/
-r9/node_modules/
+
 .env
 api/api/config.py
 api/api/settings.py
+
 api/db.sqlite3
+api/.zshrc
+api/migrate.sh
+api/runserver.sh
+
+calc/node_modules/
+api/__pycache__/
+api/src/baseUser/__pycache__
+api/src/calc/evaluate/__pycache__
+api/src/calc/expression/__pycache__
+api/src/userHistory/__pycache__
+api/src/baseUser/migrations
+api/src/calc/expression/migrations
+api/src/userHistory/migrations
