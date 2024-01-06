@@ -29,3 +29,4 @@ r9/node_modules/
 .env
 api/api/config.py
 api/api/settings.py
+api/db.sqlite3
