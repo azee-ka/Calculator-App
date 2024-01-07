@@ -6,8 +6,10 @@ import MathOutput from '../MathOutput/mathOutput.js';
 import Tabs from '../tabs/tabs.js';
 import { processOutput } from '../MathOutput/processOutput.js';
 import { MathField } from './field/field';
+import { useAuthContext } from '../../../utils/context/authentication.js';
 
 function MathInputField() {
+  const { authState } = useAuthContext();
   const mathFieldRef = useRef(null);
   const [isCopied, setIsCopied] = useState(false);
   const [isCopied1, setIsCopied1] = useState(false);
@@ -30,12 +32,12 @@ function MathInputField() {
     const timer = setInterval(() => {
       setIsCopied(false);
       setIsCopied1(false);
-    }, 3000); // Set the interval duration (in milliseconds) as per your requirement
+    }, 3000);
 
     return () => {
-      clearInterval(timer); // Clean up the timer when the component unmounts
+      clearInterval(timer);
     };
-  }, []); // Empty dependency array to run the effect only once
+  }, []);
 
 
 
@@ -58,16 +60,11 @@ function MathInputField() {
 
   const handleInitialExpression = () => {
     setIsLoading(true);
-    if (mode === 'tex') {
-      sendLatex(initialInput, handleApiResponse, selectedTabMode);
-    } else {
-      sendLatex(fieldData, handleApiResponse, selectedTabMode);
-    }
+    sendLatex(mode === 'tex' ? initialInput : fieldData, handleApiResponse, selectedTabMode, authState);
   };
 
 // Handle initial input
 useEffect(() => {
-  console.log(initialInput)
   if (initialInput !== "undefined") {
     setFieldData({ generalField: initialInput });
     handleInitialExpression();
@@ -76,27 +73,12 @@ useEffect(() => {
 
 
 
-  const handleEvaluateClick = (event) => {
-    if (event) {
-      event.preventDefault(); // Prevent the default form submission behavior
-    }
-
+  const handleEvaluateClick = () => {
     if(fieldData.generalField !== ""){
       setIsLoading(true);
-
-      if (mode === 'tex') {
-        sendLatex(fieldData.generalField, handleApiResponse, selectedTabMode);
-
-        //console.log(`/calculator/${encodedExpression}`);
-        // Update the URL with the current expression
-        navigate(`/calculator/${encodedExpression}`);
-
-      } else {
-        sendLatex(fieldData, handleApiResponse, selectedTabMode);
-
-        // Update the URL with the current expression
-        navigate(`/calculator/${encodedExpression}`);
-      }
+      sendLatex(mode === 'tex' ? fieldData.generalField : fieldData, handleApiResponse, selectedTabMode, authState);
+      // Update the URL with the current expression
+      navigate(`/calculator/${encodedExpression}`);
     } else {
       navigate(`/calculator`);
 
@@ -108,11 +90,8 @@ useEffect(() => {
   const handleApiResponse = (response) => {
     if(response !== true){
     const output = processOutput(response, mode);
-
     setIsLoading(false);
     setOut(output);
-    console.log(output)
-    console.log(output)
     }
     else if(response === true){
       setOut('Invalid')

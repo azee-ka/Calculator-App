@@ -7,8 +7,6 @@ import './mathOutput.css';
 
 const MathOutput = ({ output, handleCopyClick, handleCopyClick1,  isCopied, isCopied1, states, isLoading}) => {
 
-  console.log(output)
-
   var isInteger;
 
     try {

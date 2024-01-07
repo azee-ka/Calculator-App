@@ -29,10 +29,9 @@ const LoginForm = () => {
                 username,
                 password,
             });
-            console.log(response.data)
             login(response.data);
             handleLoginSuccess(response.data);
-            
+
             // Handle successful login here, for example, update state or redirect
         } catch (error) {
             console.error('Error logging in:', error.message);
@@ -72,7 +71,7 @@ const LoginForm = () => {
                 </form>
                 <div className='login-error-display'>
                     {loginError !== null &&
-                    loginError}
+                        loginError}
                 </div>
             </div>
         </div>

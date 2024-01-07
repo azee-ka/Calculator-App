@@ -3,10 +3,9 @@ export function processOutput(arr, operation){
 }
 
 function toOutput(arr, operation) {
-  var output;
-  var result = arr.result;
+  let output;
+  const result = arr.result;
 
-  //console.log(arr);
   if (result.output === null) {
 
     let outputStr = "";
@@ -53,7 +52,9 @@ function createGeneralOutputString(result) {
 
     if((result.output).length <= 200 && !isOutputArrayOfEquations && !isDecimalArrayOfEquations){
       if(result.isInteger === false && result.decimal !== null && output !== result.decimal && result.decimal !== 'None'){
+
         if(result.userExpr !== result.output){
+
           if(result.isExact === true){
             outputString = result.userExpr + ' = ' + result.output + ' = ' + result.decimal;
             outputStringForDecimal = result.decimal;
@@ -74,20 +75,19 @@ function createGeneralOutputString(result) {
       } else if(result.isInteger === true){
         outputString = result.userExpr + ' = ' + result.output;
       }
-   
-
-    if((result.output).length > 200 && result.decimal !== null && result.isInteger === false && !isOutputArrayOfEquations){
-      isLarge = true;
-      if(result.isExact === true){
-        outputStringForDecimal = result.decimal;
-      }
-      else if(result.isExact === false){
-        outputStringForDecimal = ' \\approx ' + result.decimal
-      }
-    } else if((result.output).length > 15 && result.isInteger === true && result.decimal === null){
-        isLarge = true;
-        outputStringForDecimal = result.decimal;
+  }
+  else if((result.output).length > 200 && result.decimal !== null && result.isInteger === false && !isOutputArrayOfEquations){
+    isLarge = true;
+    
+    if(result.isExact === true){
+      outputStringForDecimal = result.decimal;
     }
+    else if(result.isExact === false){
+      outputStringForDecimal = ' \\approx ' + result.decimal
+    }
+  } else if((result.output).length > 15 && result.isInteger === true && result.decimal === null){
+      isLarge = true;
+      outputStringForDecimal = result.decimal;
   }
   } else {
     if(result.output.join(', ') && result.decimal !== null){
