@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './mathInput.css';
-import sendLatex from './handleAPI';
+import sendLatex from './handleAPI.js';
 import MathOutput from '../MathOutput/mathOutput.js';
 import Tabs from '../tabs/tabs.js';
 import { processOutput } from '../MathOutput/processOutput.js';
-import { MathField } from './field/field';
+import { MathField } from './field/field.js';
 
 function MathInputField() {
   const mathFieldRef = useRef(null);

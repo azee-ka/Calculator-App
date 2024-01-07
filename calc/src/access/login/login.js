@@ -4,7 +4,7 @@ import axios from 'axios'; // Import Axios
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../utils/context/authentication';
 import './login.css';
-import apiUrl from '../../utils/config/apiUrl';
+import API_BASE_URL from '../../config';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${apiUrl}access/login/`, {
+            const response = await axios.post(`${API_BASE_URL}access/login/`, {
                 username,
                 password,
             });

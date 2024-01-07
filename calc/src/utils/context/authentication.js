@@ -1,6 +1,6 @@
 // AuthContext.js
 import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
-import apiUrl from '../config/apiUrl';
+import API_BASE_URL from '../../config';
 import axios from 'axios'; // Import axios
 
 
@@ -82,7 +82,7 @@ const AuthProvider = ({ children }) => {
 
   const getUserInfo = async (credentials) => {
     try {
-      const response = await fetch(`${apiUrl}user/get-user-info/`, {
+      const response = await fetch(`${API_BASE_URL}user/get-user-info/`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

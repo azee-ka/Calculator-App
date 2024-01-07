@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../utils/context/authentication';
-import apiUrl from '../../utils/config/apiUrl';
+import API_BASE_URL from '../../config';
 import './register.css';
 
 const RegisterForm = () => {
@@ -44,7 +44,7 @@ const RegisterForm = () => {
                 last_name: capitalizedLastName,
             };
             // Send registration data to the backend
-            const response = await axios.post(`${apiUrl}access/register/`, data, config);
+            const response = await axios.post(`${API_BASE_URL}access/register/`, data, config);
 
             // Handle the response from the backend as needed
             console.log(response.data);
