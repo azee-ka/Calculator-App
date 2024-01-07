@@ -45,6 +45,12 @@ function AppContent() {
     const privateRoutes = [
         {
             name: 'Calculator',
+            path: '/',
+            element: <Calculator />,
+            key: 'Home',
+        },
+        {
+            name: 'Calculator',
             path: '/calculator',
             element: <Calculator />,
             key: 'Calculator',
@@ -53,7 +59,7 @@ function AppContent() {
             name: 'Calculator',
             path: '/calculator/:expression',
             element: <Calculator />,
-            key: 'Calculator-expression', 
+            key: 'Calculator-expression',
         }
     ]
 
@@ -63,6 +69,12 @@ function AppContent() {
         <ErrorBoundary>
             <div className='App'>
                 <Router>
+                {(authState.isAuthenticated === false && privateRoutes.find((route) => route.path === window.location.pathname) !== undefined) ? (
+                        <Navigate to={'/access/login'} />
+                    ) : (
+                        <Navigate to={'/'} />
+                    )}
+
                     <Routes>
                         {routes.map(({ path, element, pageName, key }) => (
                             <Route
@@ -79,12 +91,10 @@ function AppContent() {
                                 }
                             />
                         ))}
-                        {!authState.isAuthenticated && privateRoutes.map(({ path }) => (
-              <Route key={path} path={path} element={<Navigate to="/access/login" replace />} />
-            ))}
                     </Routes>
-
+                
                 </Router>
+
             </div>
         </ErrorBoundary>
 

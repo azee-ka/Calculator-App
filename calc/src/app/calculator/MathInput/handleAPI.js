@@ -1,7 +1,15 @@
 import axios from 'axios';
 
-const sendLatex = (latex, handleApiResponse, mode) => {
+const sendLatex = (latex, handleApiResponse, mode, authState) => {
   // Prepare the data to be sent to the backend
+  
+  const config = {
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${authState.token}`,
+    }
+};
+
   let data;
     data = {
       expression: latex,
