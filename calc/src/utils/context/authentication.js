@@ -12,9 +12,6 @@ const initialAuthState = {
     first_name: '',
     last_name: '',
     email: '',
-    profile_picture: null,
-    bio: '',
-    user_type: '',
   },
 };
 
@@ -72,18 +69,6 @@ const AuthProvider = ({ children }) => {
   }, [authState]);
 
 
-  const updateUserInfo = async (responseData) => {
-      // Update user context with the fetched user information
-        authDispatch({
-          type: authActionTypes.LOGIN,
-          payload: { 
-            user: { ...authState.user, user_type: responseData.user_type },
-            isAuthenticated: authState.isAuthenticated,
-            token: authState.token,
-          },
-        });
-  };
-
   const login = (responseData) => {
     authDispatch({
       type: authActionTypes.LOGIN,
@@ -93,7 +78,6 @@ const AuthProvider = ({ children }) => {
         token: responseData.token,
       }
     });
-    console.log(authState);
   }
 
   const getUserInfo = async (credentials) => {
@@ -124,7 +108,7 @@ const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ authState, login, logout, updateUserInfo }}>
+    <AuthContext.Provider value={{ authState, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

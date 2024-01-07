@@ -14,8 +14,8 @@ const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLoginSuccess = (userType) => {
-        
+    const handleLoginSuccess = () => {
+        navigate('/calculator');
     };
 
     // Handle form submission
@@ -27,8 +27,9 @@ const LoginForm = () => {
                 username,
                 password,
             });
+            console.log(response.data)
             login(response.data);
-            handleLoginSuccess(response.data.user.user_type);
+            handleLoginSuccess(response.data);
             
             // Handle successful login here, for example, update state or redirect
         } catch (error) {

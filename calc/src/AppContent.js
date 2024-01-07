@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-
+import PrivateRoute from './PrivateRoute';
+import ErrorBoundary from './ErrorBoundary';
 import { useAuthContext } from './utils/context/authentication';
 import Layout from './struct/layout/layout';
 
@@ -45,43 +46,65 @@ function AppContent() {
             element: (<Calculator />),
             key: 'Calculator',
         },
-        {   name: 'Calculator',
-            path: '/calculator/:expression', 
-            element: <Calculator />, 
+        {
+            name: 'Calculator',
+            path: '/calculator/:expression',
+            element: <Calculator />,
             key: 'Calculator-expression',
         }
     ]
 
     const privateRoutes = [
-        
+        {
+            name: 'Calculator',
+            path: '/calculator',
+            element: (<Calculator />),
+            key: 'Calculator',
+        },
+        {
+            name: 'Calculator',
+            path: '/calculator/:expression',
+            element: <Calculator />,
+            key: 'Calculator-expression',
+        }
     ]
 
-    const routes = publicRoutes;
-
+    const routes = authState.isAuthenticated ? privateRoutes : publicRoutes;
 
 
     return (
-        <div className='App'>
-            <Router>
+        <ErrorBoundary>
+            <div className='App'>
+                <Router>
                     <Routes>
                         {routes.map(({ path, element, pageName, key }) => (
                             <Route
                                 key={key}
                                 path={path}
                                 element={
-                                    <Layout
-                                        key={key}
-                                        className={`${path.substring(1)}`}
-                                        pageName={pageName}
-                                    >
-                                        {element}
-                                    </Layout>
+                                    //<React.Fragment key={key}>
+                                    //    <Route
+                                    //        key={key}
+                                         //   element={
+                                                <Layout
+                                                    key={key}
+                                                    className={`${path.substring(1)}`}
+                                                    pageName={pageName}
+                                                >
+                                                    {element}
+                                                </Layout>
+                                      //      }
+                                    //    />
+                                  //</Routes>  </React.Fragment>
                                 }
                             />
                         ))}
                     </Routes>
-            </Router>
-        </div>
+
+                </Router>
+            </div>
+        </ErrorBoundary>
+
     );
 }
 

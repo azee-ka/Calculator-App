@@ -5,7 +5,7 @@ import './navbar.css';
 import AppLogo from '../../assets/logo.png';
 import { useAuthContext } from '../../utils/context/authentication';
 
-const Navbar = ({ privatePagesForNavbar }) => {
+const Navbar = () => {
     const { authState, logout } = useAuthContext();
 
     const location = useLocation();
@@ -17,12 +17,12 @@ const Navbar = ({ privatePagesForNavbar }) => {
         { path: '/access', label: 'Access', id: 'navbar-access' },
     ];
 
-    // const privatePagesNavbar = [
-    //     { path: '/learner/dashboard', label: 'Home', id: 'navbar-phrase' },
-    //     { path: '/about', label: 'About', id: 'navbar-phrase' },
-    //     { path: '/contact', label: 'Contact', id: 'navbar-phrase' },
-    //     { path: '/access/login', label: 'Sign Out', id: 'navbar-access', action: logout },
-    // ];
+    const privatePagesNavbar = [
+        { path: '/learner/dashboard', label: 'Home', id: 'navbar-phrase' },
+        { path: '/about', label: 'About', id: 'navbar-phrase' },
+        { path: '/contact', label: 'Contact', id: 'navbar-phrase' },
+        { path: '/access/login', label: 'Sign Out', id: 'navbar-access', action: logout },
+    ];
 
 
     const handleMenuClick = (path, action) => {
@@ -33,7 +33,7 @@ const Navbar = ({ privatePagesForNavbar }) => {
         }
     };
 
-    const pagesNavbar = authState.isAuthenticated ? privatePagesForNavbar : publicPagesNavbar;
+    const pagesNavbar = authState.isAuthenticated ? privatePagesNavbar : publicPagesNavbar;
 
     return (
         <div className={`site-navbar`}>
