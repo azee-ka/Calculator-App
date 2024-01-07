@@ -8,16 +8,11 @@ function PrivateRoute({ element, ...rest }) {
 
   console.log(authState.isAuthenticated);
 
-    return (
-        <Route {...rest} element={element} />
-    )
-
-//   return authState.isAuthenticated ? 
-//   (
-//     <Route {...rest} element={element} />
-//   ) : (
-//     <Navigate to="/access/login" replace />
-//   );
+  return authState.isAuthenticated !== false ? (
+    <Route {...rest} element={element} />
+  ) : (
+    <Navigate to="/access/login" replace />
+  );
 }
 
 export default PrivateRoute;

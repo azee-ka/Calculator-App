@@ -40,37 +40,24 @@ function AppContent() {
             element: (<RegisterForm />),
             key: 'Register',
         },
-        {
-            name: 'Calculator',
-            path: '/calculator',
-            element: (<Calculator />),
-            key: 'Calculator',
-        },
-        {
-            name: 'Calculator',
-            path: '/calculator/:expression',
-            element: <Calculator />,
-            key: 'Calculator-expression',
-        }
     ]
 
     const privateRoutes = [
         {
             name: 'Calculator',
             path: '/calculator',
-            element: (<Calculator />),
+            element: <Calculator />,
             key: 'Calculator',
         },
         {
             name: 'Calculator',
             path: '/calculator/:expression',
             element: <Calculator />,
-            key: 'Calculator-expression',
+            key: 'Calculator-expression', 
         }
     ]
 
     const routes = authState.isAuthenticated ? privateRoutes : publicRoutes;
-
 
     return (
         <ErrorBoundary>
@@ -82,23 +69,19 @@ function AppContent() {
                                 key={key}
                                 path={path}
                                 element={
-                                    //<React.Fragment key={key}>
-                                    //    <Route
-                                    //        key={key}
-                                         //   element={
-                                                <Layout
-                                                    key={key}
-                                                    className={`${path.substring(1)}`}
-                                                    pageName={pageName}
-                                                >
-                                                    {element}
-                                                </Layout>
-                                      //      }
-                                    //    />
-                                  //</Routes>  </React.Fragment>
+                                    <Layout
+                                        key={key}
+                                        className={`${path.substring(1)}`}
+                                        pageName={pageName}
+                                    >
+                                        {element}
+                                    </Layout>
                                 }
                             />
                         ))}
+                        {!authState.isAuthenticated && privateRoutes.map(({ path }) => (
+              <Route key={path} path={path} element={<Navigate to="/access/login" replace />} />
+            ))}
                     </Routes>
 
                 </Router>
