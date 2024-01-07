@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './mathInput.css';
-import sendLatex from './handleAPI.js';
+import sendLatex from './handleAPI';
 import MathOutput from '../MathOutput/mathOutput.js';
 import Tabs from '../tabs/tabs.js';
 import { processOutput } from '../MathOutput/processOutput.js';
-import { MathField } from './field/field.js';
+import { MathField } from './field/field';
 
 function MathInputField() {
   const mathFieldRef = useRef(null);
@@ -20,11 +20,9 @@ function MathInputField() {
   const { expression } = useParams();
 
   const encodedExpression = encodeURIComponent(fieldData.generalField);
-
   const decodedExpression = decodeURIComponent(expression);
 
-  const initialInput = decodedExpression;
-
+  const [initialInput, setInitial] = useState(decodedExpression);
 
   const [selectedTabMode, setSelectedTabMode] = useState('radian');
 
@@ -69,6 +67,7 @@ function MathInputField() {
 
 // Handle initial input
 useEffect(() => {
+  console.log(initialInput)
   if (initialInput !== "undefined") {
     setFieldData({ generalField: initialInput });
     handleInitialExpression();
@@ -77,7 +76,10 @@ useEffect(() => {
 
 
 
-  const handleEvaluateClick = () => {
+  const handleEvaluateClick = (event) => {
+    if (event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+    }
 
     if(fieldData.generalField !== ""){
       setIsLoading(true);
@@ -85,6 +87,7 @@ useEffect(() => {
       if (mode === 'tex') {
         sendLatex(fieldData.generalField, handleApiResponse, selectedTabMode);
 
+        //console.log(`/calculator/${encodedExpression}`);
         // Update the URL with the current expression
         navigate(`/calculator/${encodedExpression}`);
 
@@ -108,6 +111,8 @@ useEffect(() => {
 
     setIsLoading(false);
     setOut(output);
+    console.log(output)
+    console.log(output)
     }
     else if(response === true){
       setOut('Invalid')

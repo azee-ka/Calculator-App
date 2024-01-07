@@ -17,7 +17,7 @@ def submit_expression(request):
         serializer.validated_data['user'] = user
         expression_instance = serializer.save()
 
-        print(request.user)
+        print(expression_instance.expression)
         # Evaluate the expression and get the result
         result = evaluate(expression_instance.expression, oper='tex', mode='plain')
 

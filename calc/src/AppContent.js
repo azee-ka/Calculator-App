@@ -40,6 +40,18 @@ function AppContent() {
             element: (<RegisterForm />),
             key: 'Register',
         },
+        {
+            name: 'Calculator',
+            path: '/calculator',
+            element: <Calculator />,
+            key: 'Calculator',
+        },
+        {
+            name: 'Calculator',
+            path: '/calculator/:expression',
+            element: <Calculator />,
+            key: 'Calculator-expression',
+        }
     ]
 
     const privateRoutes = [
@@ -70,11 +82,12 @@ function AppContent() {
         <ErrorBoundary>
             <div className='App'>
                 <Router>
-                {(authState.isAuthenticated === false && privateRoutes.find((route) => route.path === window.location.pathname) !== undefined) ? (
+                {(authState.isAuthenticated === false && privateRoutes.find((route) => route.path === window.location.pathname) !== undefined) && (
                         <Navigate to={'/access/login'} />
-                    ) : (
-                        <Navigate to={'/calculator'} />
-                    )}
+                    // ) : (
+                    //     <Navigate to={'/calculator'} />
+                    // )
+                )}
 
                     <Routes>
                         {routes.map(({ path, element, pageName, key }) => (

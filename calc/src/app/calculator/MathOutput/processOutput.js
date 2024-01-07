@@ -6,7 +6,7 @@ function toOutput(arr, operation) {
   var output;
   var result = arr.result;
 
-  console.log(arr);
+  //console.log(arr);
   if (result.output === null) {
 
     let outputStr = "";
