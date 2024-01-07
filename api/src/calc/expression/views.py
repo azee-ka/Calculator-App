@@ -8,7 +8,7 @@ from .serializers import ExpressionSerializer
 from ..evaluate.evaluate import evaluate
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated | AllowAny])
+@permission_classes([IsAuthenticated])
 def submit_expression(request):
     serializer = ExpressionSerializer(data=request.data)
 

@@ -1,7 +1,8 @@
 
 .calculator-container {
     height: 90vh;
-    max-width: 170vh;
+    /* max-width: 170vh; */
+    width: 100%;
     color: white;
     position: relative;
     flex-grow: 1;

@@ -69,7 +69,7 @@ useEffect(() => {
     setFieldData({ generalField: initialInput });
     handleInitialExpression();
   }
-}, [initialInput]);
+}, [initialInput, authState]);
 
 
 
@@ -81,7 +81,6 @@ useEffect(() => {
       navigate(`/calculator/${encodedExpression}`);
     } else {
       navigate(`/calculator`);
-
     }
   };
 
@@ -89,9 +88,8 @@ useEffect(() => {
 
   const handleApiResponse = (response) => {
     if(response !== true){
-    const output = processOutput(response, mode);
     setIsLoading(false);
-    setOut(output);
+    setOut(processOutput(response, mode));
     }
     else if(response === true){
       setOut('Invalid')

@@ -34,12 +34,8 @@ function MathField({ id, onInputChange, mathFieldRef, handleEvaluateClick, place
     if (onInputChange) {
       onInputChange(id, inputValue);
     }
-
-    if (inputValue === '') {
-      setPlaceholderVisible(true);
-    } else {
-      setPlaceholderVisible(false);
-    }
+    setPlaceholderVisible(inputValue === '' ? true: false);
+    
   };
 
   const handleClear = () => {

@@ -37,31 +37,35 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
+
   const [authState, authDispatch] = useReducer(authReducer, initialAuthState);
 
   const [isAuthenticated, setIsAuthenticated] = useState((JSON.parse(localStorage.getItem('authState'))) !== null ? JSON.parse(localStorage.getItem('authState')).token !== null : false);
 
   // Load authentication state from localStorage on component mount
-  useEffect(() => {
-    const storedAuthStateString = localStorage.getItem('authState');
+// Load authentication state from localStorage on component mount
+useEffect(() => {
+  const storedAuthStateString = localStorage.getItem('authState');
 
-    try {
-      const storedAuthState = JSON.parse(storedAuthStateString);
+  try {
+    const storedAuthState = JSON.parse(storedAuthStateString);
 
-      // Check if a valid token is present
-      setIsAuthenticated(storedAuthState && storedAuthState.token !== null && storedAuthState.token !== undefined);
+    // Check if a valid token is present
+    setIsAuthenticated((prevIsAuthenticated) => {
+      return storedAuthState && storedAuthState.token !== null && storedAuthState.token !== undefined;
+    });
 
-      if (storedAuthState && storedAuthState.token) {
-        authDispatch({
-          type: authActionTypes.LOGIN,
-          payload: { user: storedAuthState.user, token: storedAuthState.token },
-        });
-      }
-    } catch (error) {
-      console.error('Error parsing stored auth state:', error);
-      setIsAuthenticated(false);
+    if (storedAuthState && storedAuthState.token) {
+      authDispatch({
+        type: authActionTypes.LOGIN,
+        payload: { user: storedAuthState.user, token: storedAuthState.token },
+      });
     }
-  }, [isAuthenticated]);
+  } catch (error) {
+    console.error('Error parsing stored auth state:', error);
+    setIsAuthenticated(false);
+  }
+}, [setIsAuthenticated]);  // Ensure that the callback dependency is correct
 
   // Update localStorage whenever authState changes
   useEffect(() => {
