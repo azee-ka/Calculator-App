@@ -7,7 +7,7 @@ import axios from 'axios'; // Import axios
 const initialAuthState = {
   isAuthenticated: false,
   user: {
-    id: null,
+    id: null, 
     username: '',
     first_name: '',
     last_name: '',
