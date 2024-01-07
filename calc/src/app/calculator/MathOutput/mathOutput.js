@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { InlineMath } from 'react-katex';
-
 import './mathOutput.css';
-//import image1 from './logos/p1.png';
-
 
 const MathOutput = ({ output, handleCopyClick, handleCopyClick1,  isCopied, isCopied1, states, isLoading}) => {
 
@@ -24,15 +21,6 @@ const MathOutput = ({ output, handleCopyClick, handleCopyClick1,  isCopied, isCo
       isLarge: isLarge,
     }
      */
-  
-
-  // useEffect(() => {
-  //   if(output === null){
-      
-  //   }
-  //   return () => {
-  //   };
-  // }, [isLoading]);
 
 
 

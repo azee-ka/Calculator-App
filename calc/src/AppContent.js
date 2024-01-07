@@ -65,6 +65,7 @@ function AppContent() {
 
     const routes = authState.isAuthenticated ? privateRoutes : publicRoutes;
 
+
     return (
         <ErrorBoundary>
             <div className='App'>
@@ -72,7 +73,7 @@ function AppContent() {
                 {(authState.isAuthenticated === false && privateRoutes.find((route) => route.path === window.location.pathname) !== undefined) ? (
                         <Navigate to={'/access/login'} />
                     ) : (
-                        <Navigate to={'/'} />
+                        <Navigate to={'/calculator'} />
                     )}
 
                     <Routes>

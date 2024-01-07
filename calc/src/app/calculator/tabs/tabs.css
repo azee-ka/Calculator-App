@@ -5,101 +5,101 @@
   max-height: 100%;
 }
 
-
-
 .calculator-tab-buttons {
-    display: flex;
-    background-color: rgba(192, 183, 183, 0.);
-  }
-  
-  .calculator-tab-buttons button {
-    flex: 1;
-    padding: 10px;
-    background-color: rgba(4, 141, 136, 0.478);
-    color: white !important;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .calculator-tab-buttons button.active {
-    background-color: rgba(0, 154, 164, 0.55);
-  }
-  .calculator-tab-buttons button:hover {
-    background-color: rgba(0, 153, 164, 0);
-    box-shadow: 0 0px 5px rgb(0, 180, 165) !important;
-    border: 0px solid gray;
-  }
-  
-  .calculator-tab-content {
-    margin-top: 10px;
-    background-color: rgba(255, 255, 255, 0);
-    width: 99%;
-    color: white !important;
-    min-height: fit-content !important;
-    max-height: 150px !important;
-    overflow-y: auto !important;
-  }
-  
-  .calculator-button-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: left;
-    align-content: left;
-    gap: 8px;
-    color: white;
-    margin-left: -3.4%;
-    background-color: rgba(160, 160, 160, 0);
-    overflow-y: auto !important;
-    padding-top: 0.3%;
-    padding-bottom: 0.3%;
-  }
-  
-  .calculator-content {
-    display: flex;
-    flex-direction: row;
-    align-items: left;
-    justify-content: left;
-  }
+  display: flex;
+  background-color: rgba(192, 183, 183, 0.);
+}
 
-  .calculator-button {
-    padding: 9px;
-    min-width: 70px;
-    height: 45px;
-    color: white;
-    font-size: 18px;
-    background-color: hsla(187, 100%, 21%, 0.59);
-    border: 0.1px solid rgba(255, 255, 255, 0.497);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    
-  }
-  .calculator-button:hover {
-    background-color: rgba(0, 95, 107, 0);
-    box-shadow: 0 0px 5px rgb(0, 180, 165) !important;
-    border: 0px solid gray;
-  }
+.calculator-tab-buttons button {
+  flex: 1;
+  padding: 10px;
+  background-color: rgba(4, 141, 136, 0.478);
+  color: white !important;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .calculator-tab-content{
-    overflow-y: auto;
-  }
-  
-  .separator-line {
-    width: 100%;
-    border-top: 1px solid black; 
-    margin: 5px 0;
-  }
+.calculator-tab-buttons button.active {
+  background-color: rgba(0, 154, 164, 0.55);
+}
+
+.calculator-tab-buttons button:hover {
+  background-color: rgba(0, 153, 164, 0);
+  box-shadow: 0 0px 5px rgb(0, 180, 165) !important;
+  border: 0px solid gray;
+}
+
+.calculator-tab-content {
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  width: 99%;
+  color: white !important;
+  min-height: fit-content !important;
+  max-height: 150px !important;
+  overflow-y: auto !important;
+}
+
+.calculator-button-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: left;
+  align-content: left;
+  gap: 8px;
+  color: white;
+  margin-left: -3.4%;
+  background-color: rgba(160, 160, 160, 0);
+  overflow-y: auto !important;
+  padding-top: 0.3%;
+  padding-bottom: 0.3%;
+}
+
+.calculator-content {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+}
+
+.calculator-button {
+  padding: 9px;
+  min-width: 70px;
+  height: 45px;
+  color: white;
+  font-size: 18px;
+  background-color: hsla(187, 100%, 21%, 0.59);
+  border: 0.1px solid rgba(255, 255, 255, 0.497);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.calculator-button:hover {
+  background-color: rgba(0, 95, 107, 0);
+  box-shadow: 0 0px 5px rgb(0, 180, 165) !important;
+  border: 0px solid gray;
+}
+
+.calculator-tab-content {
+  overflow-y: auto;
+}
+
+.separator-line {
+  width: 100%;
+  border-top: 1px solid black;
+  margin: 5px 0;
+}
 
 
-  .separator-line {
-    width: 96%;
-    border: 0.2px solid rgba(255, 255, 255, 0.34);
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
+.separator-line {
+  width: 96%;
+  border: 0.2px solid rgba(255, 255, 255, 0.34);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

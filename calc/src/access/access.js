@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './access.css';
 
+
 const Access = () => {
   return (
     <div className="access-page">

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import * as Desmos from 'desmos';
-import './MathQuillInput.css'; // Import the CSS file for styling
+import './MathQuillInput.css';
 
 const MathQuillInput = ({ latex, onChange }) => {
   const calculatorRef = useRef(null);

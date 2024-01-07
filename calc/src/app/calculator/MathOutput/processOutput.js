@@ -1,4 +1,3 @@
-
 export function processOutput(arr, operation){
     return toOutput(arr, operation);
 }

@@ -14,6 +14,8 @@ const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const [loginError, setLoginError] = useState(null);
+
     const handleLoginSuccess = () => {
         navigate('/calculator');
     };
@@ -35,6 +37,7 @@ const LoginForm = () => {
         } catch (error) {
             console.error('Error logging in:', error.message);
             // Handle the error as needed
+            setLoginError(error.response.data.message)
         }
     };
 
@@ -67,6 +70,10 @@ const LoginForm = () => {
 
                     <button type="submit">Login</button>
                 </form>
+                <div className='login-error-display'>
+                    {loginError !== null &&
+                    loginError}
+                </div>
             </div>
         </div>
     );

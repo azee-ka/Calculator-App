@@ -1,9 +1,6 @@
 import React, { useRef } from 'react';
 import './calculator.css';
-
-import Tabs from './tabs/tabs';
 import MathInputField from './MathInput/mathInput';
-import MathOutput from './MathOutput/mathOutput';
 
 function Calculator() {
   const mathFieldRef = useRef(null);

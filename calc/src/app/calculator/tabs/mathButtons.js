@@ -9,7 +9,6 @@ const symbols = {
     '\\sum': ['\\sum_{i={ }}^{ }\\left({ }\\right)', 4],
     '\\prod{}' : ['\\prod_{i={}}^{ }\\left({ }\\right)', 4],
     '\\lim_{}{}': [' \\lim_{x \\to } \\left( { } \\right)', 3],
-
     '\\lfloor{ }\\rfloor': ['\\lfloor{\\left(\\right) }\\rfloor', 2],
     '\\lceil{ }\\rceil': ['\\lceil{\\left(\\right) }\\rceil', 2],
     '\\lceil{ }\\rfloor': ['\\lceil{\\left(\\right) }\\rfloor', 2],

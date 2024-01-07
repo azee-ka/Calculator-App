@@ -27,6 +27,7 @@ const tabButtons = {
   // },
 };
 
+
 const KaTeXButton = ({ label, value, writeToMathField }) => (
   <button className="calculator-button" onClick={() => writeToMathField(value)}>
     <InlineMath math={label} />

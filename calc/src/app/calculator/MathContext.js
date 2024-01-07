@@ -8,7 +8,6 @@ export const MathProvider = ({ children, mathFieldRef }) => {
         mathFieldRef.current.latex(latex);
       }
     };
-  
     return (
       <MathContext.Provider value={{ writeToMathField }}>
         {children}
