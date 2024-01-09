@@ -63,18 +63,18 @@ function MathInputField() {
     sendLatex(mode === 'tex' ? initialInput : fieldData, handleApiResponse, selectedTabMode, authState);
   };
 
-// Handle initial input
-useEffect(() => {
-  if (initialInput !== "undefined") {
-    setFieldData({ generalField: initialInput });
-    handleInitialExpression();
-  }
-}, [initialInput, authState]);
+  // Handle initial input
+  useEffect(() => {
+    if (initialInput !== "undefined") {
+      setFieldData({ generalField: initialInput });
+      handleInitialExpression();
+    }
+  }, [initialInput, authState]);
 
 
 
   const handleEvaluateClick = () => {
-    if(fieldData.generalField !== ""){
+    if (fieldData.generalField !== "") {
       setIsLoading(true);
       sendLatex(mode === 'tex' ? fieldData.generalField : fieldData, handleApiResponse, selectedTabMode, authState);
       // Update the URL with the current expression
@@ -87,11 +87,11 @@ useEffect(() => {
 
 
   const handleApiResponse = (response) => {
-    if(response !== true){
-    setIsLoading(false);
-    setOut(processOutput(response, mode));
+    if (response !== true) {
+      setIsLoading(false);
+      setOut(processOutput(response, mode));
     }
-    else if(response === true){
+    else if (response === true) {
       setOut('Invalid')
     }
   };
@@ -127,40 +127,50 @@ useEffect(() => {
 
   return (
     <div className="calculator-content-holder-inside">
-      <div className="calculator-tabs">
-        <Tabs writeToMathField={writeToMathField} />
-      </div>
-      <div className='calculator-field-and-button'>
-        <div className="calculator-input-field">
-          <MathField
-            id="generalField"
-            onInputChange={handleInputChange}
-            mathFieldRef={mathFieldRef}
-            handleEvaluateClick={handleEvaluateClick}
-            placeholder='Enter Expression'
-            initialValue={initialInput}
-          />
+      <div className="calculator-content-holder-inside-inner">
+        <div className='calculator-tab-content'>
+          <Tabs writeToMathField={writeToMathField} />
         </div>
-        <div className='calculator-evaluate-button'>
-          <button onClick={handleEvaluateClick}>Evaluate</button>
+        <div className='calculator-field-button-content'>
+          <div className='calculator-field-button-content-inner'>
+            <div className='calculator-input-field'>
+              <MathField
+                id="generalField"
+                onInputChange={handleInputChange}
+                mathFieldRef={mathFieldRef}
+                handleEvaluateClick={handleEvaluateClick}
+                placeholder='Enter Expression'
+                initialValue={initialInput}
+              />
+            </div>
+            <div className='calculator-evaluate-button'>
+              <div className='calculator-evaluate-button-inner'>
+                <button onClick={handleEvaluateClick}>Evaluate</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className='mode-btns'>
-          <button
-            className={selectedTabMode === 'degree' ? 'selected-tab' : 'tab'}
-            onClick={() => handleTabClick('degree')}
-          >
-            Deg
-          </button>
-          <button
-            className={selectedTabMode === 'radian' ? 'selected-tab' : 'tab'}
-            onClick={() => handleTabClick('radian')}
-          >
-            Rad
-          </button>
+        <div className='calculator-mode-buttons'>
+          <div className='calculator-mode-buttons-inner'>
+            <div className='mode-btns'>
+              <button
+                className={selectedTabMode === 'degree' ? 'selected-tab' : 'tab'}
+                onClick={() => handleTabClick('degree')}
+              >
+                Deg
+              </button>
+              <button
+                className={selectedTabMode === 'radian' ? 'selected-tab' : 'tab'}
+                onClick={() => handleTabClick('radian')}
+              >
+                Rad
+              </button>
+            </div>
+          </div>
         </div>
-      <div className='solution-holder'>
-        <MathOutput
+        <div className='calculator-solution-content'>
+          <div className='calculator-solution-content-inner'>
+          <MathOutput
           output={out}
           handleCopyClick={handleCopyClick}
           handleCopyClick1={handleCopyClick1}
@@ -168,9 +178,62 @@ useEffect(() => {
           isCopied1={isCopied1}
           isLoading={isLoading}
         />
+          </div>
+        </div>
       </div>
     </div>
   );
+
+  // return (
+  //   <div className="calculator-content-holder-inside">
+  //     <div className="calculator-tabs">
+  //       <div className="calculator-tabs-inner">
+  //         {/* <Tabs writeToMathField={writeToMathField} /> */}
+  //       </div>
+  //     </div>
+  //     <div className='calculator-field-and-button'>
+  //       <div className="calculator-input-field">
+  //         {/* <MathField
+  //           id="generalField"
+  //           onInputChange={handleInputChange}
+  //           mathFieldRef={mathFieldRef}
+  //           handleEvaluateClick={handleEvaluateClick}
+  //           placeholder='Enter Expression'
+  //           initialValue={initialInput}
+  //         /> */}
+  //       </div>
+  //       <div className='calculator-evaluate-button'>
+  //         {/* <button onClick={handleEvaluateClick}>Evaluate</button> */}
+  //       </div>
+  //     </div>
+  //     <div className='mode-btns-container'>
+  //       {/* <div className='mode-btns'>
+  //         <button
+  //           className={selectedTabMode === 'degree' ? 'selected-tab' : 'tab'}
+  //           onClick={() => handleTabClick('degree')}
+  //         >
+  //           Deg
+  //         </button>
+  //         <button
+  //           className={selectedTabMode === 'radian' ? 'selected-tab' : 'tab'}
+  //           onClick={() => handleTabClick('radian')}
+  //         >
+  //           Rad
+  //         </button>
+  //       </div> */}
+  //     </div>
+  //     <div className='solution-holder'>
+  //       {/* <MathOutput
+  //         output={out}
+  //         handleCopyClick={handleCopyClick}
+  //         handleCopyClick1={handleCopyClick1}
+  //         isCopied={isCopied}
+  //         isCopied1={isCopied1}
+  //         isLoading={isLoading}
+  //       /> */}
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default MathInputField;

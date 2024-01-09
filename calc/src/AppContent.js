@@ -84,16 +84,11 @@ function AppContent() {
     //     }
     // }, [authState.isAuthenticated, privateRoutes]);
 
+    console.log(privateRoutes.find(route => (route.path === window.location.pathname)) !== undefined);
     return (
         <ErrorBoundary>
             <div className='App'>
                 <Router>
-                {/* {(authState.isAuthenticated === false && privateRoutes.find((route) => route.path === window.location.pathname) !== undefined) && (
-                        <Navigate to={'/access/login'} />
-                    // ) : (
-                    //     <Navigate to={'/calculator'} />
-                    )} */}
-
                     <Routes>
                         {routes.map(({ path, element, pageName, key }) => (
                             <Route
@@ -111,14 +106,10 @@ function AppContent() {
                             />
                         ))}
                     </Routes>
-                    {isAuthReady && !authState.isAuthenticated && (
-                            // <Route
-                            //     path="/access/login"
-                                // element={
-                                    <Navigate to={"/access/login"} />
-                                // } // Redirect to the login page
-                            // />
-                        )}
+                    {isAuthReady && !authState.isAuthenticated && privateRoutes.find(route => (route.path === window.location.pathname)) !== undefined && (
+                        // <Navigate to={"/access/login"}  />,
+                        window.location.href = "/access/login"
+                    )}
                 </Router>
 
             </div>

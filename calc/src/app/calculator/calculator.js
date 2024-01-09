@@ -9,9 +9,18 @@ function Calculator() {
     <div className="calculator-container">
       <div className="calculator-title">QuantaLab</div>
       <div className="calculator-holder">
-        <div className="calculator-sidebar-holder"></div>
+        <div className="calculator-sidebar-holder">
+          <div className="calculator-sidebar-holder-inner">
+
+          </div>
+        </div>
         <div className="calculator-content-holder">
-          <MathInputField mathFieldRef={mathFieldRef} />
+          <div className="calculator-content-holder-inner">
+            <div className="calculator-content-holder-inner-sub">
+            <MathInputField mathFieldRef={mathFieldRef} />
+            </div>
+             
+          </div>
         </div>
       </div>
     </div>

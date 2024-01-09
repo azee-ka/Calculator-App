@@ -4,8 +4,8 @@ from src.baseUser.models import BaseUser
 
 class UserHistory(models.Model):
     user = models.ForeignKey(BaseUser, on_delete=models.CASCADE)
-    expression = models.CharField(max_length=255)
-    result = models.CharField(max_length=255)
+    expression = models.TextField()
+    result = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
