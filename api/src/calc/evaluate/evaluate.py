@@ -8,7 +8,6 @@ from .expression import Expression, process_for_decimal
 
 
 def evaluate(latex, oper, mode):
-    raw_latex = latex
     try:
         latex = filter_input(latex)
         expression = Expression(latex, mode)
@@ -50,7 +49,6 @@ def evaluate(latex, oper, mode):
             'isExact': is_exact,
         }
     except (Exception, AttributeError, ArithmeticError) as e:
-        print(e)
         result = {
             'output': None,
             'userExpr': latex,
@@ -58,9 +56,7 @@ def evaluate(latex, oper, mode):
             'isInteger': False,
             'isExact': False,
         }
-    
-    print(f'inside result {result}')
-    
+        
     return result 
 
 
@@ -81,7 +77,6 @@ def preform_operation(latex, mode):
     except (AttributeError, Exception, SyntaxError) as e:
         print(f'Error during Opertaion Performing: {e}')
     return sympy_input
-
 
 
 import re
