@@ -1,5 +1,5 @@
-export function processOutput(arr, operation){
-    return toOutput(arr, operation);
+export function processOutput(arr, operation) {
+  return toOutput(arr, operation);
 }
 
 function toOutput(arr, operation) {
@@ -18,7 +18,7 @@ function toOutput(arr, operation) {
     }
   }
   else {
-      output = createOutputString(result, operation);
+    output = createOutputString(result, operation);
   }
 
   return output;
@@ -30,11 +30,11 @@ function toOutput(arr, operation) {
 
 function createOutputString(result, operation) {
   let outputString;
-      if (operation === "tex") {
-        outputString = createGeneralOutputString(result);
-      } else {
-        outputString += createSpecialOutputString(result, operation);
-      }
+  if (operation === "tex") {
+    outputString = createGeneralOutputString(result);
+  } else {
+    outputString += createSpecialOutputString(result, operation);
+  }
   return outputString;
 }
 
@@ -47,50 +47,50 @@ function createGeneralOutputString(result) {
   let isDecimalArrayOfEquations = Array.isArray(result.decimal);
 
   outputString = "" + result.userExpr + " = " + result.output + "";
-  if(result.output !== null && !isOutputArrayOfEquations && !isDecimalArrayOfEquations){
-      output = result.output.replace('C + ', "");
+  if (result.output !== null && !isOutputArrayOfEquations && !isDecimalArrayOfEquations) {
+    output = result.output.replace('C + ', "");
 
-    if((result.output).length <= 200 && !isOutputArrayOfEquations && !isDecimalArrayOfEquations){
-      if(result.isInteger === false && result.decimal !== null && output !== result.decimal && result.decimal !== 'None'){
+    if ((result.output).length <= 200 && !isOutputArrayOfEquations && !isDecimalArrayOfEquations) {
+      if (result.isInteger === false && result.decimal !== null && output !== result.decimal && result.decimal !== 'None') {
 
-        if(result.userExpr !== result.output){
+        if (result.userExpr !== result.output) {
 
-          if(result.isExact === true){
+          if (result.isExact === true) {
             outputString = result.userExpr + ' = ' + result.output + ' = ' + result.decimal;
             outputStringForDecimal = result.decimal;
-          } else if(result.isExact === false){
+          } else if (result.isExact === false) {
             outputString = result.userExpr + ' = ' + result.output + ' \\approx ' + result.decimal;
             outputStringForDecimal = result.decimal;
           }
         }
-        else if(result.userExpr === result.output){
-          if(result.isExact === true){
-            outputString =  result.userExpr + ' = ' + result.decimal;
+        else if (result.userExpr === result.output) {
+          if (result.isExact === true) {
+            outputString = result.userExpr + ' = ' + result.decimal;
             outputStringForDecimal = result.decimal;
-          } else if(result.isExact === false){
+          } else if (result.isExact === false) {
             outputStringForDecimal = result.decimal;
             outputString = result.output + ' \\approx ' + result.decimal;
           }
         }
-      } else if(result.isInteger === true){
+      } else if (result.isInteger === true) {
         outputString = result.userExpr + ' = ' + result.output;
       }
-  }
-  else if((result.output).length > 200 && result.decimal !== null && result.isInteger === false && !isOutputArrayOfEquations){
-    isLarge = true;
-    
-    if(result.isExact === true){
-      outputStringForDecimal = result.decimal;
     }
-    else if(result.isExact === false){
-      outputStringForDecimal = ' \\approx ' + result.decimal
-    }
-  } else if((result.output).length > 15 && result.isInteger === true && result.decimal === null){
+    else if ((result.output).length > 200 && result.decimal !== null && result.isInteger === false && !isOutputArrayOfEquations) {
+      isLarge = true;
+
+      if (result.isExact === true) {
+        outputStringForDecimal = result.decimal;
+      }
+      else if (result.isExact === false) {
+        outputStringForDecimal = ' \\approx ' + result.decimal
+      }
+    } else if ((result.output).length > 15 && result.isInteger === true && result.decimal === null) {
       isLarge = true;
       outputStringForDecimal = result.decimal;
-  }
+    }
   } else {
-    if(result.output.join(', ') && result.decimal !== null){
+    if (result.output.join(', ') && result.decimal !== null) {
       outputString = result.userExpr + ":\\hspace{0.2cm}" + result.output.join(', ');
       outputStringForDecimal = result.decimal.join(', ');
       isLarge = true;

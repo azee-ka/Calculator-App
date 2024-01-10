@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { EditableMathField, addStyles } from 'react-mathquill';
 import { useNavigate, useParams } from 'react-router-dom';
-
-
 import './field.css';
 import crossIcon from '../../../../assets/cross-icon.png';
 addStyles();
@@ -25,7 +23,7 @@ function MathField({ id, onInputChange, mathFieldRef, handleEvaluateClick, place
 
   useEffect(() => {
     if (mathFieldRef.current) {
-        mathFieldRef.current.latex(expression || ''); // Use the expression from URL or an empty string  
+      mathFieldRef.current.latex(expression || ''); // Use the expression from URL or an empty string  
     }
   }, [mathFieldRef]);
 
@@ -34,8 +32,8 @@ function MathField({ id, onInputChange, mathFieldRef, handleEvaluateClick, place
     if (onInputChange) {
       onInputChange(id, inputValue);
     }
-    setPlaceholderVisible(inputValue === '' ? true: false);
-    
+    setPlaceholderVisible(inputValue === '' ? true : false);
+
   };
 
   const handleClear = () => {
@@ -59,18 +57,18 @@ function MathField({ id, onInputChange, mathFieldRef, handleEvaluateClick, place
         )}
       </div>
       <div className='edit-field'>
-          <EditableMathField
-            config={mathFieldConfig}
-            onChange={handleChange}
-            mathquillDidMount={(mathField) => (mathFieldRef.current = mathField)}
-            onKeyDown={handleKeyDown}
-            id={id}
-            className={`math-field`}
-          />
-            <button className='clear-button' onClick={handleClear}>
-              <img src={crossIcon} alt='Clear' />
-            </button>
-        </div>
+        <EditableMathField
+          config={mathFieldConfig}
+          onChange={handleChange}
+          mathquillDidMount={(mathField) => (mathFieldRef.current = mathField)}
+          onKeyDown={handleKeyDown}
+          id={id}
+          className={`math-field`}
+        />
+        <button className='clear-button' onClick={handleClear}>
+          <img src={crossIcon} alt='Clear' />
+        </button>
+      </div>
     </div>
   );
 }

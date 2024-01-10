@@ -7,7 +7,7 @@ import axios from 'axios'; // Import axios
 const initialAuthState = {
   isAuthenticated: false,
   user: {
-    id: null, 
+    id: null,
     username: '',
     first_name: '',
     last_name: '',
@@ -43,29 +43,29 @@ const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState((JSON.parse(localStorage.getItem('authState'))) !== null ? JSON.parse(localStorage.getItem('authState')).token !== null : false);
 
   // Load authentication state from localStorage on component mount
-// Load authentication state from localStorage on component mount
-useEffect(() => {
-  const storedAuthStateString = localStorage.getItem('authState');
+  // Load authentication state from localStorage on component mount
+  useEffect(() => {
+    const storedAuthStateString = localStorage.getItem('authState');
 
-  try {
-    const storedAuthState = JSON.parse(storedAuthStateString);
+    try {
+      const storedAuthState = JSON.parse(storedAuthStateString);
 
-    // Check if a valid token is present
-    setIsAuthenticated((prevIsAuthenticated) => {
-      return storedAuthState && storedAuthState.token !== null && storedAuthState.token !== undefined;
-    });
-
-    if (storedAuthState && storedAuthState.token) {
-      authDispatch({
-        type: authActionTypes.LOGIN,
-        payload: { user: storedAuthState.user, token: storedAuthState.token },
+      // Check if a valid token is present
+      setIsAuthenticated((prevIsAuthenticated) => {
+        return storedAuthState && storedAuthState.token !== null && storedAuthState.token !== undefined;
       });
+
+      if (storedAuthState && storedAuthState.token) {
+        authDispatch({
+          type: authActionTypes.LOGIN,
+          payload: { user: storedAuthState.user, token: storedAuthState.token },
+        });
+      }
+    } catch (error) {
+      console.error('Error parsing stored auth state:', error);
+      setIsAuthenticated(false);
     }
-  } catch (error) {
-    console.error('Error parsing stored auth state:', error);
-    setIsAuthenticated(false);
-  }
-}, [setIsAuthenticated]);  // Ensure that the callback dependency is correct
+  }, [setIsAuthenticated]);  // Ensure that the callback dependency is correct
 
   // Update localStorage whenever authState changes
   useEffect(() => {
@@ -76,7 +76,7 @@ useEffect(() => {
   const login = (responseData) => {
     authDispatch({
       type: authActionTypes.LOGIN,
-      payload: { 
+      payload: {
         user: responseData.user,
         isAuthenticated: (responseData.message === "Login successful." || responseData.message === "User registered successfully.") ? true : false,
         token: responseData.token,
@@ -93,7 +93,7 @@ useEffect(() => {
           Authorization: `Token ${credentials.token}`,
         },
       });
-  
+
       if (response.ok) {
         const userData = await response.json();
         authDispatch({ type: authActionTypes.LOGIN, payload: { user: userData, token: credentials.token } });
@@ -104,7 +104,7 @@ useEffect(() => {
       console.error('Error during authentication:', error);
     }
   };
-  
+
   const logout = () => {
     authDispatch({ type: authActionTypes.LOGOUT });
     window.location.href = '/access/login';

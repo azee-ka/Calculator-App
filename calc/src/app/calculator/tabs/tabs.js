@@ -45,45 +45,45 @@ const Tabs = ({ writeToMathField }) => {
   return (
     <div className='calculator-tabs-container'>
       <div className='calculator-tabs-container-inner'>
-      <div className="calculator-tab-buttons">
-        <div className="calculator-tab-buttons-inner">
-          {Object.entries(tabButtons).map(([tab, { name }]) => (
-            <button
-              key={tab}
-              className={tab === activeTab ? 'active' : ''}
-              onClick={() => handleTabClick(tab)}
-            >
-              {name}
-            </button>
-          ))}
+        <div className="calculator-tab-buttons">
+          <div className="calculator-tab-buttons-inner">
+            {Object.entries(tabButtons).map(([tab, { name }]) => (
+              <button
+                key={tab}
+                className={tab === activeTab ? 'active' : ''}
+                onClick={() => handleTabClick(tab)}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="calculator-tab-content">
-        <div className="calculator-tab-content-inner">
-          {tabButtons[activeTab].buttons && (
-            <ul className="calculator-button-list">
-              {Object.entries(tabButtons[activeTab].buttons).map(([label, [value, strokes]]) => (
-                <React.Fragment key={label}>
-                  {!separatorRendered && label.toUpperCase() === label && (
-                    <hr className="separator-line" />
-                  )}
-                  <li>
-                    <KaTeXButton
-                      label={label}
-                      value={value}
-                      writeToMathField={() => {
-                        writeToMathField(value, strokes);
-                      }}
-                    />
-                  </li>
-                  {label.toUpperCase() === label && (separatorRendered = true)} {/* Set flag to true after rendering separator */}
-                </React.Fragment>
-              ))}
-            </ul>
-          )}
-          {!tabButtons[activeTab].buttons && <p>No buttons available for this tab.</p>}
+        <div className="calculator-tab-content">
+          <div className="calculator-tab-content-inner">
+            {tabButtons[activeTab].buttons && (
+              <ul className="calculator-button-list">
+                {Object.entries(tabButtons[activeTab].buttons).map(([label, [value, strokes]]) => (
+                  <React.Fragment key={label}>
+                    {!separatorRendered && label.toUpperCase() === label && (
+                      <hr className="separator-line" />
+                    )}
+                    <li>
+                      <KaTeXButton
+                        label={label}
+                        value={value}
+                        writeToMathField={() => {
+                          writeToMathField(value, strokes);
+                        }}
+                      />
+                    </li>
+                    {label.toUpperCase() === label && (separatorRendered = true)} {/* Set flag to true after rendering separator */}
+                  </React.Fragment>
+                ))}
+              </ul>
+            )}
+            {!tabButtons[activeTab].buttons && <p>No buttons available for this tab.</p>}
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

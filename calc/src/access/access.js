@@ -7,7 +7,7 @@ const Access = () => {
   return (
     <div className="access-page">
       <div className='content'>
-      <div className='access-side-container-holder'>
+        <div className='access-side-container-holder'>
         </div>
         <div className='access-container-holder'>
           <h2>Get Access Here</h2>

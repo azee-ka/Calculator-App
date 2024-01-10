@@ -11,15 +11,15 @@ function Calculator() {
       <div className="calculator-holder">
         <div className="calculator-sidebar-holder">
           <div className="calculator-sidebar-holder-inner">
-
+            {/* Content Addition Pending*/}
           </div>
         </div>
         <div className="calculator-content-holder">
           <div className="calculator-content-holder-inner">
             <div className="calculator-content-holder-inner-sub">
-            <MathInputField mathFieldRef={mathFieldRef} />
+              <MathInputField mathFieldRef={mathFieldRef} />
             </div>
-             
+
           </div>
         </div>
       </div>
