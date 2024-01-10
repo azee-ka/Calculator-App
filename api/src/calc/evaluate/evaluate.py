@@ -8,45 +8,58 @@ from .expression import Expression, process_for_decimal
 
 
 def evaluate(latex, oper, mode):
-    latex = filter_input(latex)
-    expression = Expression(latex, mode)
-    
-    output = preform_operation(latex, mode)
-    
-    
-    user_expr = str(expression.get_user_expr_latex())
-    
-    decimal = expression.is_decimal(output)
-    is_exact = expression.is_exact(output)
-    is_integer = expression.is_integer()           
-
-    
-    if not decimal is None:
-        decimal = str(sp.latex(decimal))
-
-    output = sp.latex(output)
-
-    if output == user_expr:
-        user_expr = latex
+    raw_latex = latex
+    try:
+        latex = filter_input(latex)
+        expression = Expression(latex, mode)
         
-    output_copy_latex = output
-    output = process_for_equations(output)
-
-    if output == output_copy_latex:
-        output = str(output)
+        output = preform_operation(latex, mode)
         
-    if isinstance(output, list):
-        decimal = convert_equations_to_decimal(output)
-        if ",".join(map(str, output)) == ",".join(map(str, decimal)):
-            decimal = None
+        
+        user_expr = str(expression.get_user_expr_latex())
+        
+        decimal = expression.is_decimal(output)
+        is_exact = expression.is_exact(output)
+        is_integer = expression.is_integer()           
 
-    result = {
-        'output': output,
-        'userExpr': user_expr,
-        'decimal': decimal,
-        'isInteger': is_integer,
-        'isExact': is_exact,
-    }
+        
+        if not decimal is None:
+            decimal = str(sp.latex(decimal))
+
+        output = sp.latex(output)
+
+        if output == user_expr:
+            user_expr = latex
+            
+        output_copy_latex = output
+        output = process_for_equations(output)
+
+        if output == output_copy_latex:
+            output = str(output)
+            
+        if isinstance(output, list):
+            decimal = convert_equations_to_decimal(output)
+            if ",".join(map(str, output)) == ",".join(map(str, decimal)):
+                decimal = None
+
+        result = {
+            'output': output,
+            'userExpr': latex,
+            'decimal': decimal,
+            'isInteger': is_integer,
+            'isExact': is_exact,
+        }
+    except (Exception, AttributeError, ArithmeticError) as e:
+        print(e)
+        result = {
+            'output': None,
+            'userExpr': latex,
+            'decimal': None,
+            'isInteger': False,
+            'isExact': False,
+        }
+    
+    print(f'inside result {result}')
     
     return result 
 
@@ -60,7 +73,7 @@ def filter_input(latex):
 
 
 def preform_operation(latex, mode):
-    sympy_input = latex2sympy(latex)
+    # sympy_input = latex2sympy(latex)
     try:
         sympy_input = latex2sympy(latex)
         sympy_expr = sp.simplify(sympy_input.doit())

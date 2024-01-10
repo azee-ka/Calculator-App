@@ -17,21 +17,24 @@ def submit_expression(request):
         serializer.validated_data['user'] = user
         expression_instance = serializer.save()
 
-        print(expression_instance.expression)
         # Evaluate the expression and get the result
         result = evaluate(expression_instance.expression, oper='tex', mode='plain')
-
-        # Save to history automatically
-        if user:
-            UserHistory.objects.create(
-                user=user,
-                expression=expression_instance.expression,
-                result=result['output'],  # Assuming 'output' contains the result
-            )
+        
+        # Check if 'output' is not None before saving to history and the serialized data
+        if result['output'] is not None:
+            # Save to history automatically
+            if user:
+                UserHistory.objects.create(
+                    user=user,
+                    expression=expression_instance.expression,
+                    result=result['output'],  # Assuming 'output' contains the result
+                )
 
         # Add the result to the serialized data
         serialized_data = ExpressionSerializer(expression_instance).data
         serialized_data['result'] = result
+
+        print(serialized_data)
 
         return Response(serialized_data, status=201)
 

@@ -97,20 +97,24 @@ function MathInputField() {
   };
 
   const handleCopyClick = () => {
-    try {
-      navigator.clipboard.writeText(out.solution.output);
-      setIsCopied(true);
-    } catch (error) {
-      console.log(error);
+    if (out.solution.output !== null) {
+      try {
+        navigator.clipboard.writeText(out.solution.output);
+        setIsCopied(true);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
   const handleCopyClick1 = () => {
-    try {
-      navigator.clipboard.writeText(out.solution.decimal);
-      setIsCopied1(true);
-    } catch (error) {
-      console.log(error);
+    if (out.solution.decimal !== null) {
+      try {
+        navigator.clipboard.writeText(out.solution.decimal);
+        setIsCopied1(true);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

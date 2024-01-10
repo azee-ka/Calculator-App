@@ -3,6 +3,7 @@ export function processOutput(arr, operation) {
 }
 
 function toOutput(arr, operation) {
+  console.log(arr)
   let output;
   const result = arr.result;
 

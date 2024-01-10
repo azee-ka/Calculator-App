@@ -14,7 +14,6 @@ import Calculator from './app/calculator/calculator';
 
 function AppContent() {
     const { authState } = useAuthContext();
-    const [redirect, setRedirect] = useState(false);
     const [isAuthReady, setIsAuthReady] = useState(false);
 
     useEffect(() => {
@@ -72,19 +71,6 @@ function AppContent() {
 
     const routes = authState.isAuthenticated ? privateRoutes : publicRoutes;
 
-    // useEffect(() => {
-    //     // Check if the user is unauthenticated and trying to access a private route
-    //     const isUnauthorizedAccess = !authState.isAuthenticated && privateRoutes.some(route => window.location.pathname.startsWith(route.path));
-
-    //     // Only set redirect if the access is still unauthorized
-    //     if (isUnauthorizedAccess) {
-    //         setRedirect(true);
-    //     } else {
-    //         setRedirect(false);
-    //     }
-    // }, [authState.isAuthenticated, privateRoutes]);
-
-    console.log(privateRoutes.find(route => (route.path === window.location.pathname)) !== undefined);
     return (
         <ErrorBoundary>
             <div className='App'>
