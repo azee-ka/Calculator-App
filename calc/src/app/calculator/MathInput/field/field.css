@@ -1,5 +1,5 @@
 .math-field {
-  min-height: 20px;
+  /* min-height: 20px; */
   overflow: auto !important;
   background-color: rgba(32, 61, 63, 0);
   color: rgb(255, 255, 255);
