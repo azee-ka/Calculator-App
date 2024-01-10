@@ -22,7 +22,7 @@
 .calculator-tab-content {
   background-color: rgba(107, 0, 128, 0) !important;
   width: 100%;
-  height: 200px !important;
+  height: 190px !important;
 }
 
 .calculator-tab-content-inner {
@@ -100,7 +100,7 @@
 
 .calculator-mode-buttons-inner {
   background-color: rgb(0, 170, 255, 0) !important;
-  height: 30px;
+  height: 28px;
   width: 100px;
   margin-left: 0.5%;
 }
@@ -111,7 +111,7 @@
   gap: 0px;
   width: 100%;
   height: 100%;
-  box-shadow: 0px 0px 3px #00596f9c !important;
+  box-shadow: 0px 0px 3px 2px #016e7f9c !important;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0);
 }
@@ -133,6 +133,7 @@
   border-radius: 4px;
   padding: 0px 11.6px;
   cursor: pointer;
+  color: rgb(0, 0, 0);
 }
 
 .mode-btns .selected-tab {
