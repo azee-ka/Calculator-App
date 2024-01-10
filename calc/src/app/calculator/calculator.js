@@ -7,19 +7,26 @@ function Calculator() {
 
   return (
     <div className="calculator-container">
-      <div className="calculator-title">QuantaLab</div>
-      <div className="calculator-holder">
-        <div className="calculator-sidebar-holder">
-          <div className="calculator-sidebar-holder-inner">
-            {/* Content Addition Pending*/}
+      <div className='calculator-container-inner'>
+        <div className="calculator-title">
+          <div className='calculator-title-inner'>
+            <h2>QuantaLab</h2>
           </div>
         </div>
-        <div className="calculator-content-holder">
-          <div className="calculator-content-holder-inner">
-            <div className="calculator-content-holder-inner-sub">
-              <MathInputField mathFieldRef={mathFieldRef} />
+        <div className='calculator-holder'>
+          <div className='calculator-holder-inner'>
+          <div className="calculator-sidebar-holder">
+            <div className="calculator-sidebar-holder-inner">
+              {/* Content Addition Pending*/}
             </div>
-
+          </div>
+          <div className="calculator-content-holder">
+            <div className="calculator-content-holder-inner">
+              <div className="calculator-content-holder-inner-sub">
+                <MathInputField mathFieldRef={mathFieldRef} />
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </div>
