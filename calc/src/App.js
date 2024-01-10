@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { AuthProvider } from './utils/context/authentication';
-import AppContent from './AppContent';
+import AppContent from './typeContent/AppContent';
 
 function App() {
 

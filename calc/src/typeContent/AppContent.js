@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import './App.css';
-import PrivateRoute from './PrivateRoute';
-import ErrorBoundary from './ErrorBoundary';
-import { useAuthContext } from './utils/context/authentication';
-import Layout from './struct/layout/layout';
+import '../App.css';
+import PrivateRoute from '../PrivateRoute';
+import ErrorBoundary from '../ErrorBoundary';
+import { useAuthContext } from '../utils/context/authentication';
+import Layout from '../struct/layout/layout';
 
-import Access from './access/access';
-import RegisterForm from './access/register/register';
-import LoginForm from './access/login/login';
+import Access from '../access/access';
+import RegisterForm from '../access/register/register';
+import LoginForm from '../access/login/login';
 
-import Calculator from './app/calculator/calculator';
+import Calculator from '../app/tools/calculator/calculator';
+import LearnerDashboard from '../app/learner/dashboardLearner/dashboard';
+
 
 function AppContent() {
     const { authState } = useAuthContext();
@@ -66,6 +68,12 @@ function AppContent() {
             path: '/calculator/:expression',
             element: <Calculator />,
             key: 'Calculator-expression',
+        },
+        {
+            name: 'Learner Dashboard',
+            path: '/learner/dashboard',
+            element: <LearnerDashboard />,
+            key: 'LearnerDashboard',
         }
     ]
 

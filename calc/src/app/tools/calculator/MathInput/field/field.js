@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { EditableMathField, addStyles } from 'react-mathquill';
 import { useNavigate, useParams } from 'react-router-dom';
 import './field.css';
-import crossIcon from '../../../../assets/cross-icon.png';
+import crossIcon from '../../../../../assets/cross-icon.png';
+
 addStyles();
 
 function MathField({ id, onInputChange, mathFieldRef, handleEvaluateClick, placeholder, initialValue }) {
