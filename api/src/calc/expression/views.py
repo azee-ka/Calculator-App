@@ -34,8 +34,6 @@ def submit_expression(request):
         serialized_data = ExpressionSerializer(expression_instance).data
         serialized_data['result'] = result
 
-        print(serialized_data)
-
         return Response(serialized_data, status=201)
 
     return Response(serializer.errors, status=400)
