@@ -75,6 +75,9 @@ function AppContent() {
         <ErrorBoundary>
             <div className='App'>
                 <Router>
+                    {isAuthReady && !authState.isAuthenticated && privateRoutes.find(route => (route.path === window.location.pathname)) !== undefined && (
+                        <Navigate to={"/access/login"}  />
+                    )}
                     <Routes>
                         {routes.map(({ path, element, pageName, key }) => (
                             <Route
@@ -92,10 +95,6 @@ function AppContent() {
                             />
                         ))}
                     </Routes>
-                    {isAuthReady && !authState.isAuthenticated && privateRoutes.find(route => (route.path === window.location.pathname)) !== undefined && (
-                        // <Navigate to={"/access/login"}  />,
-                        window.location.href = "/access/login"
-                    )}
                 </Router>
 
             </div>

@@ -63,6 +63,8 @@
 
 .calculator-evaluate-button {
   background-color: rgba(255, 192, 203, 0);
+  margin-top: -0.1% !important;
+
 }
 
 .calculator-evaluate-button-inner button {
