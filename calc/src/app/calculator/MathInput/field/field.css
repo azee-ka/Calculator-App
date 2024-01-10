@@ -51,26 +51,20 @@ input:focus {
 .clear-button {
   background: none;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
   outline: none;
   width: 4%;
   height: 36px;
   position: relative;
   justify-content: right !important;
-  border: 0;
-  margin-right: 1%;
-  margin-left: 0%;
-  top: 0%;
-
   position: absolute;
-  right: 1%;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer;
 }
 
 .clear-button:hover {
-  border: 0.5px solid rgba(128, 128, 128, 0);
+  border: 0.5px solid rgba(128, 128, 128);
 }
 
 .clear-button:active {
@@ -93,7 +87,10 @@ input:focus {
 .math-field {
   width: 100% !important;
   outline: none;
+}
 
+.math-field:hover {
+  box-shadow: 0px 0px 4px 4px rgb(4, 154, 157);
 }
 
 .edit-field {
