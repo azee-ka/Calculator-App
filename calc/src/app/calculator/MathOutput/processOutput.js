@@ -28,7 +28,6 @@ function toOutput(arr, operation) {
 
 
 
-
 function createOutputString(result, operation) {
   let outputString;
   if (operation === "tex") {
@@ -112,7 +111,6 @@ function createGeneralOutputString(result) {
 
   return obj;
 }
-
 
 
 

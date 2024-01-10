@@ -18,7 +18,6 @@ const sendLatex = (latex, handleApiResponse, mode, authState) => {
   // Make a POST request to the backend API
   axios.post(`${API_BASE_URL}calculator/submit-expression/`, data, config)
     .then((response) => {
-      // Handle the response from the backend if needed
       handleApiResponse(response.data);
     })
     .catch((error) => {

@@ -189,7 +189,6 @@ function MathInputField() {
       </div>
     </div>
   );
-
 }
 
 export default MathInputField;
