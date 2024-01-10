@@ -13,14 +13,12 @@ const Navbar = () => {
 
     const publicPagesNavbar = [
         { path: '/', label: 'Home', id: 'navbar-phrase' },
-        { path: '/calculator', label: 'Calculator', id: 'navbar-phrase' },
         { path: '/access', label: 'Access', id: 'navbar-access' },
     ];
 
     const privatePagesNavbar = [
-        { path: '/learner/dashboard', label: 'Home', id: 'navbar-phrase' },
-        { path: '/about', label: 'About', id: 'navbar-phrase' },
-        { path: '/contact', label: 'Contact', id: 'navbar-phrase' },
+        { path: '/learner/dashboard', label: 'Dashboard', id: 'navbar-phrase' },
+        { path: '/calculator', label: 'Calculator', id: 'navbar-phrase' },
         { path: '/access/login', label: 'Sign Out', id: 'navbar-access', action: logout },
     ];
 
@@ -40,7 +38,7 @@ const Navbar = () => {
             <div className='navbar-container'>
                 <div className='navbar-inner'>
                     <div className={`app-logo`}>
-                        <Link to={'/access'}>
+                        <Link to={'/'}>
                             <img src={AppLogo} alt=''></img>
                         </Link>
                     </div>
