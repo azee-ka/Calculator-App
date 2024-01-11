@@ -68,7 +68,7 @@ input:focus {
 }
 
 .clear-button:active {
-  background-color: rgba(0, 87, 104, 0.158);
+  background-color: rgba(2, 124, 148, 0.426);
 }
 
 .clear-button img {
@@ -91,6 +91,7 @@ input:focus {
 
 .math-field:hover {
   box-shadow: 0px 0px 4px 4px rgb(4, 154, 157);
+  background-color: rgba(0, 241, 245, 0.09) !important;
 }
 
 .edit-field {
@@ -124,4 +125,8 @@ input:focus {
 .edit-field span:focus {
   outline: none !important;
   box-shadow: 0px 0px 5px rgb(0, 255, 153) !important;
+}
+
+.math-field:focus {
+  background-color: white;
 }

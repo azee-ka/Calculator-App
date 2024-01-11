@@ -11,7 +11,7 @@ import RegisterForm from '../access/register/register';
 import LoginForm from '../access/login/login';
 
 import Calculator from '../app/tools/calculator/calculator';
-import LearnerDashboard from '../app/learner/dashboardLearner/dashboard';
+import LearnerDashboard from '../app/learner/dashboardLearner/learnerDashboard';
 
 
 function AppContent() {
